@@ -27,6 +27,14 @@ module BreadcrumbsOnRails
       @breadcrumbs ||= []
     end
 
+    def remove_breadcrumbs(leave_first = false)
+      if leave_first
+        self.breadcrumbs.slice!(1,self.breadcrumbs.size)
+      else
+        self.breadcrumbs.clear
+      end
+    end
+
     module Utils
 
       def self.instance_proc(string)
